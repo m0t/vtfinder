@@ -54,9 +54,9 @@ def getInitialModules():
     global modules
     cmd = dbgCommand('lm').split('\n')[1:-1]
     for line in cmd:
-        substrings = line.split('   ')
-        if len(substrings) > 1:
-            modulename = str(substrings[1])
+        substrings = " ".join(line.split()).split()
+        if len(substrings) > 2:
+            modulename = str(substrings[2])
             modules.append(module(modulename))
 
 def isAddressWithinLoadedModules(address):
